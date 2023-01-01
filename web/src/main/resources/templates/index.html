@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="~{fragment/bootstrap.html}"></div>
+    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/index.js"></script>
+</head>
+<body onload="onLoad()" style="padding: 10px;">
+
+<div th:insert="~{fragment/modal-popup.html}"></div>
+
+<div style="padding: 10px;" th:insert="~{fragment/thread.html}"></div>
+
+<div class="row padding-0">
+    <div class="col-md-8 padding-0">
+        <div class="pb-3">
+            <div th:insert="~{fragment/note-form.html}"></div>
+        </div>
+        <div class="row justify-content-center align-items-center padding-0">
+            <div th:insert="~{fragment/file.html}"></div>
+        </div>
+    </div>
+    <!--    <div class="col-md-4">.col-md-4</div>-->
+    <div class="col-md-4 padding-0">
+        <div th:insert="~{fragment/existing-files.html}"></div>
+    </div>
+</div>
+</body>
+</html>

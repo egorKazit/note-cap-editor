@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+}
+
+.not-found-text {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+    font-size: 40px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    /*opacity: 0.3;*/
+}

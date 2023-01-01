@@ -1,0 +1,15 @@
+<label for="file-form-container">Upload file</label>
+<iframe id="dummyFrame" name="dummyFrame" style="display: none;"></iframe>
+<div id="file-form-container">
+    <form class="form-inline" enctype="multipart/form-data" id="file-form"
+          method="POST"
+          target="dummyFrame">
+        <div class="form-group">
+            <input class="form-control-file" id="upload-file" name="file" type="file">
+        </div>
+        <button class="btn btn-success pull-right" id="upload-button"
+                onclick="uploadFileGlobal.upload()" type="button">Upload
+        </button>
+    </form>
+</div>
+<script src="/js/file.js"></script>

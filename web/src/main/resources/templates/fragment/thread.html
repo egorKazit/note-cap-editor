@@ -1,0 +1,41 @@
+<div aria-hidden="true" aria-labelledby="new-thread-label" class="modal fade" data-backdrop="static"
+     data-keyboard="false"
+     id="new-thread"
+     role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="new-thread-label">New thread</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" disabled id="new-thread-close"
+                        type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="col-form-label text-left justify-content-start" for="new-thread-name">Thread
+                            name:</label>
+                        <input class="form-control" id="new-thread-name" type="text">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="threadWrapper.createThread()" type="button">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="input-group">
+    <select aria-label="Select thread" class="custom-select" id="thread-list">
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-outline-success" onclick="threadWrapper.openNewThread()" type="button">Create
+        </button>
+        <button class="btn btn-outline-danger" onclick="threadWrapper.removeThread()" type="button">
+            Delete
+        </button>
+    </div>
+</div>
+<script src="/js/thread.js"></script>

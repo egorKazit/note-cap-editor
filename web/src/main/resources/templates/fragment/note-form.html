@@ -1,0 +1,19 @@
+<form class="align-items-center needs-validation" id="note-edit-form">
+    <div class="form-group" id="note-edit-form-group">
+        <label class="text-center justify-content-start" for="note-edit-data">Plain text edit</label>
+        <textarea class="form-control" id="note-edit-data" required rows="25"></textarea>
+        <div class="form-inline" id="note-edit-entry">
+            <label for="note-edit-name">Entry name</label>
+            <div class="flex-fill">
+                <input class="form-control w-100 p-3" disabled id="note-edit-name" placeholder="Undefined" type="text">
+            </div>
+            <button class="btn btn-success btn-lg float-right" id="note-edit-save" onclick="nodeForm.saveForm()"
+                    type="button">Save
+            </button>
+            <button class="btn btn-warning btn-lg float-right" id="note-edit-clear" onclick="nodeForm.clearForm()"
+                    type="button">Clear
+            </button>
+        </div>
+    </div>
+</form>
+<script src="/js/note-form.js"></script>

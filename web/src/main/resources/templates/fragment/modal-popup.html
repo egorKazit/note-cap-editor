@@ -1,0 +1,25 @@
+<div class="modal" id="modal-popup" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-popup-header"></h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-popup-text"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-popup-confirm" onclick="modalPopup.confirm()"
+                        type="button">Confirm
+                </button>
+                <button class="btn btn-secondary" data-dismiss="modal" id="modal-popup-close"
+                        type="button">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/modal-popup.js"></script>

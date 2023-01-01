@@ -1,0 +1,37 @@
+services:
+  capper-xsuaa:
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-plan: application
+      service-keys:
+        - name: capper-xsuaa-key
+applications:
+  - name: capper-holder
+    path: srv/target/srv-exec.jar
+    routes:
+      - route: ((holder_route))
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack/releases/download/v4.53/java-buildpack-v4.53.zip
+    services:
+      - Hana
+      - capper-xsuaa
+      - gmail-drive
+    env:
+      JAVA_OPTS: '--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.time=ALL-UNNAMED'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ }, memory_calculator: { stack_threads: 25 } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+  - name: capper-web
+    path: web/target/web-1.0.0-SNAPSHOT-exec.jar
+    routes:
+      - route: ((web_route))
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack/releases/download/v4.53/java-buildpack-v4.53.zip
+    services:
+      - capper-creds
+      - capper-xsuaa
+    env:
+      JAVA_OPTS: '--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.time=ALL-UNNAMED'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 17.+ }, memory_calculator: { stack_threads: 25 } }'
+      HOLDER_PATH: ((holder_route))/odata/v4/CapperService/
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'

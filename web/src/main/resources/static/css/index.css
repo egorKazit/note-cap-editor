@@ -1,0 +1,9 @@
+textarea {
+    resize: none;
+    white-space: nowrap;
+}
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}

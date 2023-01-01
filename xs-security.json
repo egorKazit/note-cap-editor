@@ -1,0 +1,21 @@
+{
+  "xsappname": "capper-holder",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.capper",
+      "description": "capper"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "capper",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.capper"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

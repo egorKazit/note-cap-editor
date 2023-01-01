@@ -1,0 +1,79 @@
+<div hidden id="existing-files-draft">
+    <div class="card" id="existing-file-draft">
+        <div class="card-header" id="existing-file-deader">
+            <h2 class="mb-0">
+                <button aria-controls="collapse-item-draft" aria-expanded="true" class="btn btn-link"
+                        data-target="#collapse-item-draft"
+                        data-toggle="collapse" type="button">
+                    collapse-item-text-draft
+                </button>
+            </h2>
+        </div>
+
+        <div aria-labelledby="existing-file-draft" class="collapse" data-parent="#existing-files-accordion"
+             id="collapse-item-draft">
+            <div class="card-body" id="collapse-item-card-body-draft">
+                new-file-content
+            </div>
+            <button class="btn btn-danger float-right" data-id="existing-created-file-draft-uuid"
+                    data-type="existing-created-file-draft-type"
+                    onclick="existingFiles.remove(this.getAttribute('data-id'),this.getAttribute('data-type'))" type="button">Delete
+            </button>
+            <button class="btn btn-primary float-right"
+                    data-id="existing-created-file-draft-uuid"
+                    id="existing-file-edit-button-draft"
+                    onclick="existingFiles.edit(this.getAttribute('data-id'))" type="button">Edit
+            </button>
+            <button class="btn btn-success float-right"
+                    data-id="existing-created-file-draft-uuid"
+                    id="existing-file-download-button-draft"
+                    onclick="existingFiles.download(this.getAttribute('data-id'))" type="button">Download
+            </button>
+        </div>
+    </div>
+</div>
+
+<label for="existing-files-accordion">Existing files</label>
+<div class="accordion" id="existing-files-accordion" style="overflow-y: scroll; height:800px;">
+    <!--/*@thymesVar id="threadItems" type="java.util.List<com.yk.web.vdm.ThreadItem>"*/-->
+    <!--/*@thymesVar id="threadItem" type="com.yk.web.vdm.ThreadItem"*/-->
+    <div id="existing-files" th:each="threadItem: ${threadItems}">
+        <div class="card" th:id="'existing-file-' + ${threadItem.getID()}">
+            <div class="card-header" id="existing-file-header">
+                <h2 class="mb-0">
+                    <button aria-expanded="true" class="btn btn-link" data-toggle="collapse"
+                            th:aria-controls="'collapse-item-' + ${threadItem.getID()}"
+                            th:data-target="'#collapse-item-' + ${threadItem.getID()}" type="button">
+                        [[${threadItem.getID()}]]
+                    </button>
+                </h2>
+            </div>
+
+            <div aria-labelledby="existing-file-draft" class="collapse" data-parent="#existing-files-accordion"
+                 th:id="'collapse-item-' + ${threadItem.getID()}">
+                <div class="card-body" th:id="'collapse-item-card-body-' + ${threadItem.getID()}">
+                    [[${threadItem.getContent()}]]
+                </div>
+                <button class="btn btn-danger float-right" th:data-id="|${threadItem.getID()}|"
+                        th:data-type="|${threadItem.getType()}|"
+                        th:onclick="|existingFiles.remove(this.getAttribute('data-id'),this.getAttribute('data-type'))|" type="button">Delete
+                </button>
+                <button class="btn btn-primary float-right"
+                        th:data-id="|${threadItem.getID()}|"
+                        th:id="'existing-file-edit-button-' + ${threadItem.getID()}"
+                        th:if="${T(com.yk.web.vdm.ThreadItem.Type).NOTE} == ${threadItem.getType()}"
+                        th:onclick="|existingFiles.edit(this.getAttribute('data-id'))|"
+                        type="button">Edit
+                </button>
+                <button class="btn btn-success float-right" th:data-id="|${threadItem.getID()}|"
+                        th:id="'existing-file-download-button-' + ${threadItem.getID()}"
+                        th:if="${T(com.yk.web.vdm.ThreadItem.Type).ATTACHMENT} == ${threadItem.getType()}"
+                        th:onclick="|existingFiles.download(this.getAttribute('data-id'))|"
+                        type="button">Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/js/exising-files.js"></script>
